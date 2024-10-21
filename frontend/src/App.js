@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import UserInput from './UserInput';
 
 function App() {
 
@@ -50,41 +51,13 @@ function App() {
       <h3>Enter children details:</h3>
       <form>
         {inputGroups.map((group, index) => (
-        <div key={index} className="input-group">
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={group.name}
-              onChange={(event) => handleInputChange(index, event)}
-              required
-            />
-          </label>
-          <label>
-            Age:
-            <input
-              type="number"
-              name="age"
-              value={group.age}
-              onChange={(event) => handleInputChange(index, event)}
-              required
-            />
-          </label>
-          <label>
-            Gender:
-            <select
-              name="gender"
-              value={group.gender}
-              onChange={(event) => handleInputChange(index, event)}
-              required
-            >
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-          </label>
-        </div>
-      ))}
+          <UserInput
+            key={index}
+            index={index}
+            group={group}
+            handleInputChange={handleInputChange}
+          />
+        ))}
 
         <div className="button-group">
           <button type="button" onClick={addInputGroup}>Add</button>
